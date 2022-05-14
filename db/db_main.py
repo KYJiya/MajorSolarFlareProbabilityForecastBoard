@@ -4,6 +4,10 @@ from dotenv import load_dotenv
 import sys
 import os
 
+
+load_dotenv(verbose=True)
+
+
 if sys.platform.startswith("darwin"):
     cx_Oracle.init_oracle_client(
         lib_dir="db/instant/instantclient_21_6",
