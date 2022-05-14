@@ -10,8 +10,8 @@ load_dotenv(verbose=True)
 
 if sys.platform.startswith("darwin"):
     cx_Oracle.init_oracle_client(
-        lib_dir="db/instant/instantclient_21_6",
-        config_dir="db/instant/Wallet_DB20220512224308")
+        lib_dir=os.environ.get("PWD")+"/db/instant/instantclient_21_6",
+        config_dir=os.environ.get("PWD")+"/db/instant/Wallet_DB20220512224308")
 elif sys.platform.startswith("win"):
     cx_Oracle.init_oracle_client(
         lib_dir=r"db\instant\instantclient_21_3",
