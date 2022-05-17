@@ -1,5 +1,5 @@
-from db.engine import dbEngine
-import db.model as model
+from engine import dbEngine
+import model
 
 
 if __name__=="__main__":
