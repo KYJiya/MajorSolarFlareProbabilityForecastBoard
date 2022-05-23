@@ -1,4 +1,6 @@
 scripts/
 db/instant/
+__pycache__/
+
 .*
 !.gitignore
