@@ -5,14 +5,16 @@ from db.engine import dbEngine
 import db.model as model
 
 
-def get_hmi():
-    url = 'http://jsoc.stanford.edu/cgi-bin/ajax/jsoc_info'
+params = {
+    "ds": "",
+    "op": "rs_list",
+    "key": "",
+}
 
-    params = {
-        "ds": "hmi.mharp_720s_nrt[][$]",
-        "op": "rs_list",
-        "key": "T_REC,HARPNUM,NOAA_ARS",
-    }
+
+def get_harpnum(url, harpnum, key):
+    params["ds"] = f"hmi.mharp_720s_nrt[{harpnum}][$]"
+    params["key"] = key
 
     response = requests.get(
         url,
@@ -21,7 +23,21 @@ def get_hmi():
 
     data = response.json()
 
-    pprint.pprint(data)
+    return data
+
+
+def get_sharp_value(url, harpnum, key):
+    params["ds"] = f"hmi.sharp_720s_nrt[{harpnum}][$]"
+    params["key"] = key
+
+    response = requests.get(
+        url,
+        params=params,
+    )
+
+    data = response.json()
+
+    return data
 
 
 if __name__=="__main__":
@@ -29,4 +45,15 @@ if __name__=="__main__":
     conn = engine.connect()
     print(conn.scalar("select sysdate from dual"))
     
-    get_hmi()
+    url = 'http://jsoc.stanford.edu/cgi-bin/ajax/jsoc_info'
+    harpnum = ""
+    key = "T_REC,HARPNUM,NOAA_ARS"
+
+    data = get_harpnum(url, harpnum, key)
+
+    key = "T_REC,HARPNUM,TOTUSJH,TOTUSJZ,TOTPOT,USFLUX,ABSNJZH,SAVNCPP"
+    harpnum = data["keywords"][1]["values"][0]
+    
+    data = get_sharp_value(url, harpnum, key)
+    
+    pprint.pprint(data)
