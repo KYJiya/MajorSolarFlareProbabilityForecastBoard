@@ -1,5 +1,5 @@
 # Major Solar Flare Probability Forecast Board
-
+# python 3.10.4
 
 # DB config
 

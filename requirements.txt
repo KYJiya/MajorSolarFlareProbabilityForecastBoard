@@ -1,3 +1,5 @@
 cx_Oracle
 sqlalchemy
 python-dotenv
+
+requests
