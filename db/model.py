@@ -28,7 +28,7 @@ class hmi_sharp(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     def __repr__(self):
-        return f'''Flare(
+        return f'''hmi_sharp(
             id={self.id!r}, 
             date={self.date!r}, 
             noaa_ar={self.noaa_ar!r},
@@ -62,7 +62,7 @@ class probability_model_long(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     def __repr__(self):
-        return f'''Flare(
+        return f'''probability_model_long(
             id={self.id!r}, 
             date={self.date!r}, 
             noaa_ar={self.noaa_ar!r},
@@ -99,7 +99,7 @@ class probability_model(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     def __repr__(self):
-        return f'''Flare(
+        return f'''probability_model(
             id={self.id!r}, 
             date={self.date!r}, 
             noaa_ar={self.noaa_ar!r},
@@ -111,3 +111,4 @@ class probability_model(Base):
             p_savncpp={self.p_savncpp!r},
             created_at={self.created_at!r}
         )'''
+        
