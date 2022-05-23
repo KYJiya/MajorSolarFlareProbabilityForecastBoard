@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.sql import func
+from sqlalchemy.schema import Sequence
 
 
 Base = declarative_base()
@@ -9,7 +10,13 @@ Base = declarative_base()
 class Flare(Base):
     __tablename__ = "Flare"
 
-    id = Column(Integer, primary_key=True)
+    id_seq = Sequence('id_seq', metadata=Base.metadata)
+    id = Column(
+        Integer, 
+        id_seq, 
+        server_default=id_seq.next_value(),
+        primary_key=True
+    )
     date = Column(String(100))
     noaa_ar = Column(String(100))
     h_ctotal = Column(Float)
