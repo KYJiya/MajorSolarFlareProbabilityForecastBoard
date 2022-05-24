@@ -2,7 +2,7 @@ import requests
 import pprint
 
 from db.engine import dbEngine
-from db.insert import hmi_insert
+from db.insert import hmi_insert, probability_long_insert
 import db.model as model
 
 
@@ -45,6 +45,7 @@ if __name__=="__main__":
     engine = dbEngine()
     
     url = 'http://jsoc.stanford.edu/cgi-bin/ajax/jsoc_info'
+
     harpnum = ""
     key = "HARPNUM"
 
@@ -56,5 +57,7 @@ if __name__=="__main__":
     data = get_sharp_value(url, harpnum, key)
     
     hmi_insert(engine, data)
+
+    probability_long_insert(engine, data)
     
     pprint.pprint(data)
