@@ -18,6 +18,7 @@ class hmi_sharp(Base):
         primary_key=True
     )
     date = Column(String(100))
+    harpnum = Column(String(100))
     noaa_ar = Column(String(100))
     h_ctotal = Column(Float)    
     j_ztotal = Column(Float)
@@ -30,7 +31,8 @@ class hmi_sharp(Base):
     def __repr__(self):
         return f'''hmi_sharp(
             id={self.id!r}, 
-            date={self.date!r}, 
+            date={self.date!r},
+            harpnum={self.harpnum!r},
             noaa_ar={self.noaa_ar!r},
             h_ctotal={self.h_ctotal!r},
             j_ztotal={self.j_ztotal!r},
@@ -52,6 +54,7 @@ class probability_model_long(Base):
         primary_key=True
     )
     date = Column(String(100))
+    harpnum = Column(String(100))
     noaa_ar = Column(String(100))
     p_l_totusjh = Column(Float)
     p_l_totusjz = Column(Float)
@@ -65,6 +68,7 @@ class probability_model_long(Base):
         return f'''probability_model_long(
             id={self.id!r}, 
             date={self.date!r}, 
+            harpnum={self.harpnum!r},
             noaa_ar={self.noaa_ar!r},
             p_l_totusjh={self.p_l_totusjh!r},
             p_l_totusjz={self.p_l_totusjz!r},
@@ -87,6 +91,7 @@ class probability_model(Base):
         primary_key=True
     )
     date = Column(String(100))
+    harpnum = Column(String(100))
     noaa_ar = Column(String(100))
     p_totusjh = Column(Float)
     p_totusjz = Column(Float)
@@ -101,7 +106,8 @@ class probability_model(Base):
     def __repr__(self):
         return f'''probability_model(
             id={self.id!r}, 
-            date={self.date!r}, 
+            date={self.date!r},
+            harpnum={self.harpnum!r},
             noaa_ar={self.noaa_ar!r},
             p_totusjh={self.p_totusjh!r},
             p_totusjz={self.p_totusjz!r},
