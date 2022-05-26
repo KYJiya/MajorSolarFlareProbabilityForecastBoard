@@ -3,5 +3,7 @@ sqlalchemy
 python-dotenv
 
 requests
+bs4
 
 numpy
+tqdm
